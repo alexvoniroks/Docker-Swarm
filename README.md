@@ -2,7 +2,7 @@
 
 ## Description
 
-This project demonstrates the usage of Docker Compose to deploy a web application using Nginx and PHP containers. The Docker Compose file (`docker-compose.yml`) defines the services, their configurations, and the overall application setup. 
+This project demonstrates the usage of Docker Swarm to deploy a web application using Nginx and PHP containers. The Docker Compose file (`docker-compose.yml`) defines the services, their configurations, and the overall application setup. 
 
 ## Files
 
