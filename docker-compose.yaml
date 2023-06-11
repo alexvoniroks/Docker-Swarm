@@ -1,6 +1,6 @@
 version: '3'
 services:
-# Nginx Service
+  # Nginx Service
   nginx:
     image: nginx:stable-alpine
     restart: unless-stopped
@@ -9,8 +9,14 @@ services:
     volumes:
       - ./www/:/var/www/public/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
 
-# PHP
+  # PHP
   php:
     image: php:fpm-alpine3.18
     restart: unless-stopped
@@ -18,3 +24,9 @@ services:
       - "9000:9000"
     volumes:
       - ./www/:/var/www/public/
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
