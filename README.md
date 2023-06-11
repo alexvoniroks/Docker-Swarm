@@ -7,8 +7,7 @@ This project demonstrates the usage of Docker Compose to deploy a web applicatio
 ## Files
 
 1. `docker-compose.yml`: 
-   - Purpose: Defines the services, their configurations, and resource limits for the application.
-   - Usage: Run `docker-compose up` to deploy the application stack.
+   - Purpose: Defines the services, their configurations, and resource limits for the application
 
 2. `www/index.php`:
    - Purpose: Contains the PHP code for the web application.
@@ -31,22 +30,29 @@ git clone https://github.com/your/repository.git
 4. Customize `nginx/app.conf`:
 - Adjust the Nginx configuration in this file based on your application's requirements.
 
-5. Deploy the application:
-- Run the following command to start the application stack:
+5. Deploy the services: 
+- Run the following command to deploy the services defined in the Docker Compose file:
   ```
-  docker-compose up -d
+  docker stack deploy -c docker-compose.yml <STACKNAME>
   ```
-
-6. Access the application:
+6. Verify the deployment: Use the following commands to check the status and logs of the deployed services:
+- To check the status of the stack:
+  ```
+  docker stack ps <STACKNAME>
+  ```
+- To view the logs of the NGINX service:
+  ```
+  docker service logs <STACKNAME>_nginx
+  ```
+- To view the logs of the PHP service:
+  ```
+  docker service logs <STACKNAME>_php
+  ```
+7. Access the application:
 - Open a web browser and navigate to `http://localhost` to access the deployed web application.
 
-7. Cleanup:
+8. Cleanup:
 - To stop and remove the application containers, run:
   ```
-  docker-compose down
+  docker stack rm <STACKNAME>
   ```
-
-## Notes
-
-- Ensure that Docker and Docker Compose are installed on your system before running the application.
-- Make sure to customize the `index.php` and `app.conf` files according to your specific application requirements.
